@@ -1,0 +1,125 @@
+1: exit
+2: fork
+3: read
+4: write
+5: open
+6: close
+9: link
+10: unlink
+11: execve
+12: chdir
+20: getpid
+45: brk
+90: mmap
+91: munmap
+122: uname
+125: mprotect
+140: llseek
+146: writev
+183: getcwd
+195: stat
+196: lstat
+197: fstat
+
+***arm
+mov r7, 1 ;r7 is special for 
+
+---or----
+****x86
+EAX (Extended Accumulator Register):
+AX (Accumulator Register): Lower 16 bits of EAX
+AH (Accumulator High byte): Higher 8 bits of AX
+AL (Accumulator Low byte): Lower 8 bits of AX
+eax sys_write
+
+eax = 1: sys_exit syscall to terminate the program.
+eax = 3: sys_read syscall to read from a file.
+eax = 4: sys_write syscall to write to a file.
+eax = 5: sys_open syscall to open a file.
+eax = 6: sys_close syscall to close a file.
+
+ebx : File description 
+Can be used as a base pointer for memory access but is a general-purpose register.
+
+
+0: Standard input (stdin)
+1: Standard output (stdout)
+2: Standard error (stderr)
+
+ecx: Commonly used to pass the second argument 
+(e.g., a pointer to a buffer or string).
+
+ecx, message
+
+
+or
+
+Often used for loop counters and shift/rotate operations.
+
+File Access Modes
+Here are some common file access mode constants and their values:
+
+O_RDONLY (Read-only mode): 0
+O_WRONLY (Write-only mode): 1
+O_RDWR (Read and write mode): 2
+
+
+edx: Generally used to pass the third argument 
+(e.g., the size of the buffer or number of bytes).
+
+edx, length
+
+Used in conjunction with rax for multiplication and division operations.
+
+Address    Value
+0x1000     'E'
+0x1001     'n'
+0x1002     'g'
+0x1003     'l'
+0x1004     'i'
+0x1005     's'
+0x1006     'h'
+0x1007     '\0'  (null terminator)
+0x1008     ?? (could be anything)
+
+
+
+-------------------------
+
+jz = jump if zero (use ofter cmp(compare) or test)
+cmp eax, ebx    ; Compare eax and ebx
+jz label_equal  ; Jump to label_equal if eax equals ebx
+jc = jump if carry
+
+cmp ==================================
+
+ZF (Zero Flag): Set if the result is zero.
+SF (Sign Flag): Set if the result is negative (most significant bit set).
+OF (Overflow Flag): Set if the result overflows or underflows for signed operands.
+CF (Carry Flag): Set if there is a borrow required from the most significant bit during subtraction.
+Example:
+
+mov eax, 10    ; eax = 10
+cmp eax, 5     ; Compare eax with 5
+After cmp eax, 5:
+
+If eax is greater than 5, ZF will be clear (0).
+If eax is equal to 5, ZF will be set (1).
+If eax is less than 5, ZF will be clear (0) and CF will be set (1).
+------------------------------
+test =========================================
+
+performs a bitwise **AND** operation between operand1 and operand2, storing the result in a temporary register (although this result is typically not used or stored).
+The FLAGS register is updated based on the result of the AND operation, specifically:
+ZF (Zero Flag): Set if the result of the AND operation is zero.
+SF (Sign Flag): Set if the most significant bit of the result is set.
+PF (Parity Flag): Set according to the parity (even or odd) of the least significant byte of the result.
+Example:
+-----------
+mov eax, 10101010b    ; eax = 0xAA (binary)
+test eax, 10000000b   ; Test if the most significant bit is set After test eax, 10000000b:
+-----------
+ZF will be set (1) if the result of eax AND 10000000b is zero.
+SF will be set (1) if the most significant bit of eax AND 10000000b is set.
+
+like test eax,1 = eax and 1 

@@ -1,0 +1,61 @@
+AX (Accumulator Register): Lower 16 bits of EAX use I/O, arithmetic, datamanipulate
+AH (Accumulator High byte): Higher 8 bits of AX
+AL (Accumulator Low byte): Lower 8 bits of AX
+
+test al,al ; to check that string have reach null terminate
+like 'h'e'l'l'o,0 read one by one
+lodsb(load string byte) ===================
+-Load: Copies the byte from memory at esi(source) to al.****
+
+scasb (Scan String Byte) ==================
+- Compare: Compares the byte in al with the byte at edi. (extended destiny index)
+
+
+
+
+jne (Jump if Not Equal)
+Syntax: jne destination (jne method_thatyouwant)
+
+jz (Jump if Zero)
+Syntax: jz destination
+jmp (Unconditional Jump)
+Syntax: jmp destination
+
+
+
+
+
+ret (Return from Procedure)
+
+
+
+Byte Swap (bswap):============
+
+This instruction swaps the byte order of eax. For example, if eax is 0x12345678 before bswap, after bswap it becomes 0x78563412.
+Nibble Swapping:===================
+
+The code then proceeds to swap the nibbles within each byte:
+High Nibbles: Extracted using and eax, 0xf0f0f0f and shifted left by 4 (shl eax, 0x4).
+Low Nibbles: Extracted using and edx, 0xf0f0f0f0 and shifted right by 4 (shr edx, 0x4).
+Combined using or eax, edx.
+Bit Pair Swapping:===========================
+
+After nibble swapping, the code swaps adjacent pairs of bits:
+First Pair: Extracted using and eax, 0x33333333 and shifted left by 2 (shl eax, 0x2).
+Second Pair: Extracted using and edx, 0xcccccccc and shifted right by 2 (shr edx, 0x2).
+Combined using or eax, edx.
+Individual Bit Swapping:
+
+Finally, individual bits are swapped:
+Even Bits: Extracted using and eax, 0x55555555.
+Odd Bits: Extracted using and edx, 0xaaaaaaaa and shifted right by 1 (shr edx, 1).
+Combined using add eax, eax (effectively shifting left by 1) and or eax, edx.
+
+
+  28:          shr    edx,0x2                 ; Shift edx right by 2 bits
+  2b:          shl    eax,0x2                 ; Shift eax left by 2 bits
+  2e:          or     eax,edx                 ; Combine the swapped pairs into eax
+
+   8:          and    eax,0xf0f0f0f            ; Mask to isolate the high nibbles
+   d:          and    edx,0xf0f0f0f0           ; Mask to isolate the low nibbles
+

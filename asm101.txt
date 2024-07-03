@@ -1,0 +1,65 @@
+General-Purpose Registers in x86-64 vs. x86
+Register Names and Usage
+rax / eax / ax / al
+
+x86-64: rax (64-bit)
+x86: eax (32-bit)
+16-bit: ax
+8-bit: al (lower 8 bits) and ah (upper 8 bits of ax)
+Name: Accumulator Register
+Purpose: Often used for arithmetic, logic operations, and function return values.
+rbx / ebx / bx / bl
+
+x86-64: rbx (64-bit)
+x86: ebx (32-bit)
+16-bit: bx
+8-bit: bl (lower 8 bits) and bh (upper 8 bits of bx)
+Name: Base Register
+Purpose: Can be used as a base pointer for memory access but is a general-purpose register.
+rcx / ecx / cx / cl
+
+x86-64: rcx (64-bit)
+x86: ecx (32-bit)
+16-bit: cx
+8-bit: cl (lower 8 bits) and ch (upper 8 bits of cx)
+Name: Count Register
+Purpose: Often used for loop counters and shift/rotate operations.
+rdx / edx / dx / dl
+
+x86-64: rdx (64-bit)
+x86: edx (32-bit)
+16-bit: dx
+8-bit: dl (lower 8 bits) and dh (upper 8 bits of dx)
+Name: Data Register
+Purpose: Used in conjunction with rax for multiplication and division operations.
+rsi / esi / si / sil
+
+x86-64: rsi (64-bit)
+x86: esi (32-bit)
+16-bit: si
+8-bit: sil (lower 8 bits)
+ Sourse Index Register
+**
+
+rdi / edi / di / dil
+
+x86-64: rdi (64-bit)
+x86: edi (32-bit)
+16-bit: di
+8-bit: dil (lower 8 bits)
+Name: Destination Index Register
+Purpose: Used as a destination pointer in string operations and memory copies.
+rsp / esp / sp
+
+x86-64: rsp (64-bit)
+x86: esp (32-bit)
+16-bit: sp
+Name: Stack Pointer
+Purpose: Points to the current top of the stack. It's crucial for managing the stack in subroutine calls and local variable storage.
+rbp / ebp / bp
+
+x86-64: rbp (64-bit)
+x86: ebp (32-bit)
+16-bit: bp
+Name: Base Pointer
+Purpose: Typically used to reference the base of the current stack frame for local variable access.

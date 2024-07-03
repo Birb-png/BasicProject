@@ -1,0 +1,29 @@
+rax = 0: sys_read
+
+Reads data from a file descriptor into a buffer.
+rax = 1: sys_write
+
+Writes data from a buffer to a file descriptor (often used for output to stdout).
+rax = 60: sys_exit
+
+Terminates the current process with an exit status.
+rax = 2: sys_open
+
+Opens a file specified by a pathname.
+rax = 3: sys_close
+
+Closes a file descriptor.
+rax = 60: sys_exit
+
+Terminates the current process with an exit status.
+rax = 12: sys_brk
+
+Changes the location of the program break, which defines the end of the process's data segment.
+rax = 59: sys_execve
+Executes a new program.
+rax = 231: sys_exit_group
+Terminates all threads in the calling process.
+
+rdi = rbx
+rsi = rcx
+rdx
